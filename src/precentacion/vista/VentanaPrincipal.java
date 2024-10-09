@@ -2,6 +2,7 @@ package precentacion.vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.MenuBar;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -31,6 +34,7 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.add(mnPersona);
 		
 		mntmAgregar = new JMenuItem("Agregar");
+		
 		mnPersona.add(mntmAgregar);
 		
 		mntmModificar = new JMenuItem("Modificar");
@@ -41,10 +45,68 @@ public class VentanaPrincipal extends JFrame {
 		
 		mntmListar = new JMenuItem("Listar");
 		mnPersona.add(mntmListar);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setContentPane(new JPanel());
+		getContentPane().setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().setLayout(new BorderLayout(0, 0));
+		setContentPane(getContentPane());
 	}
+
+	public JPanel getContentPane() {
+		return contentPane;
+	}
+
+	public void setContentPane(JPanel contentPane) {
+		this.contentPane = contentPane;
+	}
+
+	/*public MenuBar getMenuBar() {
+		return this.menuBar;
+	}*/
+
+	public void setMenuBar(JMenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
+	public JMenu getMnPersona() {
+		return mnPersona;
+	}
+
+	public void setMnPersona(JMenu mnPersona) {
+		this.mnPersona = mnPersona;
+	}
+
+	public JMenuItem getMntmAgregar() {
+		return mntmAgregar;
+	}
+
+	public void setMntmAgregar(JMenuItem mntmAgregar) {
+		this.mntmAgregar = mntmAgregar;
+	}
+
+	public JMenuItem getMntmModificar() {
+		return mntmModificar;
+	}
+
+	public void setMntmModificar(JMenuItem mntmModificar) {
+		this.mntmModificar = mntmModificar;
+	}
+
+	public JMenuItem getMntmEliminar() {
+		return mntmEliminar;
+	}
+
+	public void setMntmEliminar(JMenuItem mntmEliminar) {
+		this.mntmEliminar = mntmEliminar;
+	}
+
+	public JMenuItem getMntmListar() {
+		return mntmListar;
+	}
+
+	public void setMntmListar(JMenuItem mntmListar) {
+		this.mntmListar = mntmListar;
+	}
+
+	
 
 }

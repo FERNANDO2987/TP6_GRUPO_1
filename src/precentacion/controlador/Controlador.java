@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
+import precentacion.vista.PanelAgregar;
 import precentacion.vista.VentanaPrincipal;
 
 public class Controlador implements ActionListener
@@ -19,16 +20,26 @@ public class Controlador implements ActionListener
 	{
 		this.ventanaPrincipal = ventanaPrincipal;
 		this.pNeg = pNeg;
+		this.ventanaPrincipal.getMntmAgregar().addActionListener(this);
 	}
 	
 	public void inicializar()
 	{
 		this.ventanaPrincipal.show();
 	}
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	private void menuAgregar(ActionEvent a)
+	{
+		ventanaPrincipal.getContentPane().removeAll();
+		PanelAgregar panel = new PanelAgregar();
+		ventanaPrincipal.getContentPane().add(panel);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
 	}
-
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		 if (e.getSource() == ventanaPrincipal.getMntmAgregar()) {
+		        menuAgregar(e);
+		
+		 }
+	}
 }

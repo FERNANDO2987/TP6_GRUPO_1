@@ -1,5 +1,7 @@
 package dao;
 
-public class PersonaDao {
+import entidad.Persona;
 
+public interface PersonaDao {
+	public boolean agregar(Persona persona);
 }
