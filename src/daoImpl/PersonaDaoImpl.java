@@ -2,6 +2,13 @@ package daoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 
 import dao.PersonaDao;
 import entidad.Persona;
@@ -11,7 +18,7 @@ public class PersonaDaoImpl implements PersonaDao {
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "root";
-	private String dbname = "bdregistro";
+	private String dbname = "bdpersonas";
 	
 	@Override
 	public boolean agregar(Persona persona) {
@@ -34,5 +41,62 @@ public class PersonaDaoImpl implements PersonaDao {
 		 else
 			 return false;
 	}
+
+	@Override
+	public boolean delete(Persona persona) {
+	    String query = "DELETE FROM personas WHERE Dni = ?";
+	    boolean exito = false;
+
+	    try (Connection cn = DriverManager.getConnection(host + dbname, user, pass);
+	         PreparedStatement pst = (PreparedStatement) cn.prepareStatement(query)) {
+	         
+	        pst.setString(1, persona.getDni());
+	        int filas = pst.executeUpdate();
+	        exito = (filas > 0);
+	        
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return exito;
+	}
+
+
+	   @Override
+	   public List<Persona> obtenerPersonas() {
+	       List<Persona> personas = new ArrayList<>();
+	       String query = "SELECT Dni, Nombre, Apellido FROM personas";  // Asegúrate de que esta tabla existe
+	       Connection cn = null;
+
+	       try {
+	           cn = DriverManager.getConnection(host + dbname, user, pass);
+	           Statement st = (Statement) cn.createStatement();
+	           ResultSet rs = st.executeQuery(query);
+
+	           while (rs.next()) {
+	               Persona persona = new Persona();
+	               persona.setDni(rs.getString("Dni"));
+	               persona.setNombre(rs.getString("Nombre"));
+	               persona.setApellido(rs.getString("Apellido"));
+	               personas.add(persona);
+	           }
+
+	           System.out.println("Personas cargadas: " + personas.size()); // Verifica cuántas personas se cargaron
+	       } catch (SQLException e) {
+	           e.printStackTrace();
+	       } finally {
+	           try {
+	               if (cn != null) cn.close();
+	           } catch (SQLException e) {
+	               e.printStackTrace();
+	           }
+	       }
+	       return personas;
+	   }
+
+
+	
+	
+	
 
 }

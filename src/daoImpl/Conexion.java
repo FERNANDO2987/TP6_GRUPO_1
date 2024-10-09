@@ -14,7 +14,8 @@ public class Conexion
 		try
 		{
 			//Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdPersonas","root","Ca�o.Pelota3");//poner tu contraseña de mysql
+			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdPersonas?useSSL=false", "root", "root");
+
 			this.connection.setAutoCommit(false);
 		}
 		catch(Exception e)

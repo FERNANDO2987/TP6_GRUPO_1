@@ -1,8 +1,8 @@
 package precentacion.vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.MenuBar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,11 +10,14 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class VentanaPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	private JMenu mnPersona;
@@ -36,12 +39,26 @@ public class VentanaPrincipal extends JFrame {
 		mntmAgregar = new JMenuItem("Agregar");
 		
 		mnPersona.add(mntmAgregar);
+	    mntmAgregar.addActionListener(new ActionListener() {  
+            @Override  
+            public void actionPerformed(ActionEvent e) {  
+                abrirFormAgregar();  
+            }  
+        });  
 		
 		mntmModificar = new JMenuItem("Modificar");
 		mnPersona.add(mntmModificar);
 		
 		mntmEliminar = new JMenuItem("Eliminar");
 		mnPersona.add(mntmEliminar);
+		
+		mnPersona.add(mntmEliminar);
+	    mntmAgregar.addActionListener(new ActionListener() {  
+            @Override  
+            public void actionPerformed(ActionEvent e) {  
+            	abrirFormEliminar();  
+            }  
+        });  
 		
 		mntmListar = new JMenuItem("Listar");
 		mnPersona.add(mntmListar);
@@ -50,7 +67,18 @@ public class VentanaPrincipal extends JFrame {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		setContentPane(getContentPane());
 	}
+	
+	   private void abrirFormAgregar() {  
+	        FormAgregar formAgregar = new FormAgregar();  
+	        formAgregar.setVisible(true);  // Open the form  
+	    } 
 
+	   
+	   private void abrirFormEliminar() {  
+	        FormAgregar formEliminar = new FormAgregar();  
+	        formEliminar.setVisible(true);  // Open the form  
+	    } 
+	   
 	public JPanel getContentPane() {
 		return contentPane;
 	}
@@ -80,7 +108,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public void setMntmAgregar(JMenuItem mntmAgregar) {
-		this.mntmAgregar = mntmAgregar;
+		  mnPersona.add(mntmAgregar);  
 	}
 
 	public JMenuItem getMntmModificar() {
@@ -107,6 +135,8 @@ public class VentanaPrincipal extends JFrame {
 		this.mntmListar = mntmListar;
 	}
 
+	
+ 
 	
 
 }
