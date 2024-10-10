@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 
 import negocio.PersonaNegocio;
 
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,9 +21,14 @@ public class PanelEliminar extends JPanel {
     private JButton btnEliminar;
 
     public PanelEliminar() {
-        setLayout(null);
+        // Usar un layout más flexible
+        setLayout((LayoutManager) new FlowLayout(FlowLayout.CENTER, 10, 10)); // Center align with gaps
+
+        // Cambiar el tamaño del panel
+        setPreferredSize(new java.awt.Dimension(300, 150));
 
         JLabel lblDni = new JLabel("Dni");
+     
         lblDni.setBounds(101, 38, 88, 14);
         add(lblDni);
 
@@ -31,7 +38,7 @@ public class PanelEliminar extends JPanel {
         txtDni.setColumns(10);
 
         btnEliminar = new JButton("Eliminar");
-        btnEliminar.setBounds(101, 125, 98, 23);
+        btnEliminar.setBounds(101, 90, 80, 25);
         add(btnEliminar);
 
         // Agregar el ActionListener al botón

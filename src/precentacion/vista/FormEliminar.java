@@ -12,25 +12,25 @@ import java.awt.event.ActionListener;
 public class FormEliminar extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    private JList<Persona> personaList; // JList para mostrar las personas
-    private DefaultListModel<Persona> listModel; // Modelo de lista para agregar y eliminar
-    private JButton eliminarButton; // Botón para eliminar la persona seleccionada
-    private PersonaDao personaDao; // Interfaz DAO
-
+    private JList<Persona> personaList; 
+    private DefaultListModel<Persona> listModel; 
+    private JButton eliminarButton; 
+    private PersonaDao personaDao; 
     public FormEliminar() {
-        personaDao = new PersonaDaoImpl(); // Inicializar el DAO
-        listModel = new DefaultListModel<>(); // Inicializar el modelo de la lista
-        personaList = new JList<>(listModel); // Crear la lista con el modelo
+        personaDao = new PersonaDaoImpl(); 
+        listModel = new DefaultListModel<>(); 
+        personaList = new JList<>(listModel); 
 
-        cargarPersonas(); // Cargar personas desde la base de datos
+        cargarPersonas(); 
 
-        // Resto de la configuración del JFrame
+        
         setTitle("Eliminar Usuarios");
+        
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrar la ventana
+        setLocationRelativeTo(null); 
 
-        // Configuración del botón eliminar
+       
         eliminarButton = new JButton("Eliminar");
         eliminarButton.addActionListener(new ActionListener() {
             @Override
