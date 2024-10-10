@@ -30,7 +30,7 @@ public class FormEliminar extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
 
-        // Configuración del botón eliminar
+       
         eliminarButton = new JButton("Eliminar");
         eliminarButton.addActionListener(new ActionListener() {
             @Override
