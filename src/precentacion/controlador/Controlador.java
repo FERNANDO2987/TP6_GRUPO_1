@@ -23,6 +23,7 @@ public class Controlador implements ActionListener
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(this);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void inicializar()
 	{
 		this.ventanaPrincipal.show();
