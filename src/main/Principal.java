@@ -1,6 +1,7 @@
 package main;
 
 import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
 import precentacion.controlador.*;
 import precentacion.vista.*;
 
@@ -12,7 +13,7 @@ public class Principal {
 		// 
 		VentanaPrincipal vista = new VentanaPrincipal();
 		
-		PersonaNegocio negocio = new PersonaNegocio();
+		PersonaNegocio negocio = new PersonaNegocioImpl();
 		
 		Controlador controlador = new Controlador(vista, negocio);
 		

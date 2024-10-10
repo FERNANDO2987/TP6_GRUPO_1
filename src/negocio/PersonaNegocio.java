@@ -1,5 +1,10 @@
 package negocio;
 
-public class PersonaNegocio {
+import java.util.ArrayList;
 
+import entidad.Persona;
+
+public interface PersonaNegocio {
+	
+	public ArrayList<Persona> listar();
 }
