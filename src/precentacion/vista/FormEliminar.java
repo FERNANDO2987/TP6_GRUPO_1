@@ -16,6 +16,7 @@ public class FormEliminar extends JFrame {
     private DefaultListModel<Persona> listModel; 
     private JButton eliminarButton; 
     private PersonaDao personaDao; 
+    
     public FormEliminar() {
         personaDao = new PersonaDaoImpl(); 
         listModel = new DefaultListModel<>(); 
@@ -25,7 +26,6 @@ public class FormEliminar extends JFrame {
 
         
         setTitle("Eliminar Usuarios");
-        
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 

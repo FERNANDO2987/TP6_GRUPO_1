@@ -18,7 +18,7 @@ public class FormAgregar extends JFrame {
     private JButton aceptarButton;  
 
     public FormAgregar() {  
-        setTitle("Persona");  
+        setTitle("Agregar persona");  
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  
         setSize(400, 300);  
         setLocationRelativeTo(null);  

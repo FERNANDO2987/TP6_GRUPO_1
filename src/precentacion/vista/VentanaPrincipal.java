@@ -47,7 +47,15 @@ public class VentanaPrincipal extends JFrame {
         });  
 		
 		mntmModificar = new JMenuItem("Modificar");
+		
 		mnPersona.add(mntmModificar);
+		mntmModificar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abrirFormModificar();
+			}
+		});
 		
 		
 		
@@ -74,6 +82,10 @@ public class VentanaPrincipal extends JFrame {
 	        formAgregar.setVisible(true);  // Open the form  
 	    } 
 
+	   private void abrirFormModificar(){
+		   FormModificar formModificar = new FormModificar();
+		   formModificar.setVisible(true);
+	   }
 	   
 	   private void abrirFormEliminar() {  
 	        FormEliminar formEliminar = new FormEliminar();  
