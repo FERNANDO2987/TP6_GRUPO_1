@@ -8,7 +8,9 @@ import entidad.Persona;
 
 import java.awt.*;  
 import java.awt.event.ActionEvent;  
-import java.awt.event.ActionListener;  
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;  
 
 public class FormAgregar extends JFrame {  
     private static final long serialVersionUID = 1L;  
@@ -30,12 +32,49 @@ public class FormAgregar extends JFrame {
 
         JLabel nombreLabel = new JLabel("Nombre");  
         nombreField = new JTextField(10);  
+        
+        // Añadir KeyListener para nombres  
+        nombreField.addKeyListener(new KeyAdapter() {  
+            @Override  
+            public void keyTyped(KeyEvent e) {  
+                char caracter = e.getKeyChar();  
+                
+                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {  
+                    e.consume(); // Cancela el evento de teclado  
+                }  
+            }  
+        }); 
 
         JLabel apellidoLabel = new JLabel("Apellido");  
-        apellidoField = new JTextField(10);  
+        apellidoField = new JTextField(10);
+        
+        // Añadir KeyListener para apellidos  
+        apellidoField.addKeyListener(new KeyAdapter() {  
+            @Override  
+            public void keyTyped(KeyEvent e) {  
+                char caracter = e.getKeyChar();  
+                
+                if (!Character.isLetter(caracter) && !Character.isWhitespace(caracter)) {  
+                    e.consume(); // Cancela el evento de teclado  
+                }  
+            }  
+        });  
 
         JLabel dniLabel = new JLabel("Dni");  
         dniField = new JTextField(10);  
+        
+        // Añadir KeyListener para DNI  
+        dniField.addKeyListener(new KeyAdapter() {  
+            @Override  
+            public void keyTyped(KeyEvent e) {  
+                char caracter = e.getKeyChar();  
+                // solo dígitos y verificacion de longitud
+                if (!Character.isDigit(caracter) || dniField.getText().length() >= 8) {  
+                    e.consume(); // Cancela el evento de teclado  
+                }  
+            }  
+        });
+        
 
         aceptarButton = new JButton("Aceptar");  
         aceptarButton.addActionListener(new ActionListener() {  
