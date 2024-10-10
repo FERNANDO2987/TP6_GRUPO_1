@@ -15,4 +15,11 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 	public ArrayList<Persona> listar() {
 		return pdao.listar();
 	}
+
+	@Override
+	public boolean eliminarPersona(String dni) {
+        Persona persona = new Persona();
+        persona.setDni(dni);
+        return pdao.delete(persona);
+	}
 }

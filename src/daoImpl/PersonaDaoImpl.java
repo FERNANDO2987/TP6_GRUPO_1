@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mysql.cj.protocol.Resultset;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
+//import com.mysql.jdbc.PreparedStatement;
+//import com.mysql.jdbc.Statement;
 
 import dao.PersonaDao;
 import entidad.Persona;
