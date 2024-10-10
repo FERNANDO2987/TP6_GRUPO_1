@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class FormModificar extends JFrame {
@@ -60,12 +62,13 @@ public class FormModificar extends JFrame {
 		txtDniSelect = new JTextField();
 		txtDniSelect.setColumns(10);
 		txtDniSelect.setBounds(230, 220, 86, 20);
+		txtDniSelect.setEditable(false);
 		getContentPane().add(txtDniSelect);
 		
 		btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(330, 220, 100, 23);
 		getContentPane().add(btnModificar, BorderLayout.SOUTH);
-		
+			
 		lblTexto = new JLabel("Seleccione la persona que desea modificar");
 		lblTexto.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblTexto.setBounds(30, 23, 400, 14);
@@ -73,6 +76,42 @@ public class FormModificar extends JFrame {
 
 		personaList.setBounds(30, 43, 400, 170);
 		getContentPane().add(personaList);
+		
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String nombre = txtNombreSelect.getText();  
+                String apellido = txtApellidoSelect.getText();  
+                
+				Persona selectedPersona = personaList.getSelectedValue();	
+				
+                if (txtNombreSelect.getText().isEmpty() || txtNombreSelect.getText().isEmpty() || txtDniSelect.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(FormModificar.this,   
+                        "Es necesario completar todos los campos",  
+                        "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if (selectedPersona != null) {
+              
+                	boolean exito = personaDao.modificar(selectedPersona, nombre, apellido);
+                    if (exito) {
+                    	cargarPersonas();
+                        JOptionPane.showMessageDialog(FormModificar.this,
+                        		"Persona modificada exitosamente",
+                        		"Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else {
+                            JOptionPane.showMessageDialog(FormModificar.this, 
+                            	"Error al modificar la persona",
+                            	"Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } 
+                else {
+                	JOptionPane.showMessageDialog(FormModificar.this,    
+                			"Seleccione una persona para modificar",          
+                			"Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+			}
+		});
 		
 		personaList.addListSelectionListener(new ListSelectionListener() {
         	public void valueChanged(ListSelectionEvent arg0) {
@@ -94,7 +133,7 @@ public class FormModificar extends JFrame {
 	}
 	
 	private void cargarPersonas() {
-        listModel.clear(); // Limpia el modelo de la lista antes de cargar
+        listModel.clear();
         List<Persona> personas = (List<Persona>) personaDao.obtenerPersonas();
         for (Persona persona : personas) {
             listModel.addElement(persona);
