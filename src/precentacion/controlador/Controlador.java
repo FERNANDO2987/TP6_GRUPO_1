@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 import precentacion.vista.PanelAgregar;
+import precentacion.vista.PanelEliminar;
 import precentacion.vista.VentanaPrincipal;
 
 public class Controlador implements ActionListener
@@ -21,6 +22,7 @@ public class Controlador implements ActionListener
 		this.ventanaPrincipal = ventanaPrincipal;
 		this.pNeg = pNeg;
 		this.ventanaPrincipal.getMntmAgregar().addActionListener(this);
+		this.ventanaPrincipal.getMntmEliminar().addActionListener(this);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -36,11 +38,25 @@ public class Controlador implements ActionListener
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
+	
+	
+	private void menuEliminar(ActionEvent a)
+	{
+		ventanaPrincipal.getContentPane().removeAll();
+		PanelEliminar panel = new PanelEliminar();
+		ventanaPrincipal.getContentPane().add(panel);
+		ventanaPrincipal.getContentPane().repaint();
+		ventanaPrincipal.getContentPane().revalidate();
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		 if (e.getSource() == ventanaPrincipal.getMntmAgregar()) {
 		        menuAgregar(e);
 		
-		 }
+		 }else if (e.getSource() == ventanaPrincipal.getMntmEliminar()) {
+			 menuEliminar(e);
+	        }
 	}
+	
 }
