@@ -70,11 +70,22 @@ public class VentanaPrincipal extends JFrame {
         });  
 		
 		mntmListar = new JMenuItem("Listar");
+		mntmListar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				abrirFormListar();
+			}
+		});
+		
 		mnPersona.add(mntmListar);
 		setContentPane(new JPanel());
 		getContentPane().setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		setContentPane(getContentPane());
+	}
+		
+	private void abrirFormListar() {
+		FormListar formListar = new FormListar();
+		formListar.setVisible(true);
 	}
 	
 	   private void abrirFormAgregar() {  
