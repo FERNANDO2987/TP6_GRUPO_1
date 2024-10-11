@@ -20,8 +20,10 @@ public class FormListar extends JFrame {
     private PersonaDaoImpl personaDAO = new PersonaDaoImpl();
 
     public FormListar() {
+    	setTitle("Listar personas");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
+        setLocationRelativeTo(null);
 
 
         contentPane = new JPanel();

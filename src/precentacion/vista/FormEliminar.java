@@ -25,9 +25,9 @@ public class FormEliminar extends JFrame {
         cargarPersonas(); 
 
         
-        setTitle("Eliminar Usuarios");
+        setTitle("Eliminar persona");
         setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null); 
 
        
