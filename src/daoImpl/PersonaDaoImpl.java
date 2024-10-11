@@ -47,24 +47,22 @@ public class PersonaDaoImpl implements PersonaDao {
 	
 	@Override
 	public boolean modificar(Persona persona, String nombre, String apellido) {
-		String query = "UPDATE personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
-		Connection cn = null;
-		boolean exito = false;
-		try
-		{
-			cn = DriverManager.getConnection(host+dbname,user,pass);
-			PreparedStatement pst = (PreparedStatement) cn.prepareStatement(query);
-			pst.setString(1, nombre);
-			pst.setString(2, apellido);
-			pst.setString(3, persona.getDni());
-			int filas = pst.executeUpdate(query);
-			exito = (filas > 0);
-					
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return exito;
+	    String query = "UPDATE personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
+	    try (Connection cn = DriverManager.getConnection(host + dbname, user, pass);
+	         PreparedStatement pst = cn.prepareStatement(query)) {
+	         
+	        pst.setString(1, nombre);
+	        pst.setString(2, apellido);
+	        pst.setString(3, persona.getDni());
+	        
+	        int filas = pst.executeUpdate();
+	        return filas > 0;
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return false;
 	}
+
 
 	@Override
 	public ArrayList<Persona> listar() {
